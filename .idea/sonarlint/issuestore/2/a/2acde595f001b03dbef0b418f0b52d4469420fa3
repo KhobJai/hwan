@@ -1,0 +1,7 @@
+
+S	java:S106$"9Replace this use of System.out or System.err by a logger.(þ£ä©ýÿÿÿÿ
+E
+java:S11720"0Remove this unused method parameter "fieldName".(”æ²n
+E
+java:S1611B"/Remove the parentheses around the "f" parameter(Úê†£
+S	java:S106G"9Replace this use of System.out or System.err by a logger.(Þàš¬øÿÿÿÿ

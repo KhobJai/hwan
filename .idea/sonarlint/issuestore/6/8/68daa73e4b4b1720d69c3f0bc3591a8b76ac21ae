@@ -1,0 +1,31 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Êšë
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Êšë
+`	java:S1126"FDefine and throw a dedicated exception instead of using a generic one.(¶ÚÊøÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(şÍ»‡şÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(˜ô¦¿ıÿÿÿÿ
+J
+java:S3740"/Provide the parametrized type for this generic.(˜ô¦¿ıÿÿÿÿ
+E
+java:S3740"/Provide the parametrized type for this generic.(÷¡õÏ
+O
+java:S1610"9Convert the abstract class "MapHunter" into an interface.(†„ı
+P
+java:S1118":Add a private constructor to hide the implicit public one.(†„ı
+a
+java:S6201
+"FReplace this instanceof check and cast with 'instanceof String string'(£§àóùÿÿÿÿ
+]
+java:S6201"BReplace this instanceof check and cast with 'instanceof List list'(ÚÑä€øÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(á¬Ÿh
+N	java:S106!"9Replace this use of System.out or System.err by a logger.(±Õ¨å
+M	java:S106""9Replace this use of System.out or System.err by a logger.(«òµ
+V
+java:S6201$"@Replace this instanceof check and cast with 'instanceof Map map'(¢……Ì
+S	java:S106%"9Replace this use of System.out or System.err by a logger.(÷Áõ›ùÿÿÿÿ
+S	java:S106("9Replace this use of System.out or System.err by a logger.(¾ÁÒøùÿÿÿÿ
+S	java:S106,"9Replace this use of System.out or System.err by a logger.(ÙÙ­“ûÿÿÿÿ
+S	java:S1060"9Replace this use of System.out or System.err by a logger.(¬ãâùÿÿÿÿ
+M	java:S1063"9Replace this use of System.out or System.err by a logger.(ßœÊ

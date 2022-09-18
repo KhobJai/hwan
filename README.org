@@ -1,0 +1,18 @@
+* Hwan
+
+Syntactic SweetSugar and convenience methods for you Java to help your War and Peace
+functions read like a tweet.
+
+
+** Utilities:
+
+1. Resource Reading/Writing
+2. File Marshalling/Unmarshalling
+3. String Utils
+4. Nested Map finders
+
+
+
+Licence:
+
+MIT
