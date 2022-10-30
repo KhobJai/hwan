@@ -10,16 +10,20 @@ internal class WaitTest {
 
     @Test
     fun waitUntilCompleteTest() {
-        val pred:Pred =  {
-            Thread.sleep(1980)
-            println("Test Pred Finished")
-             true
-        }
+        val pred: Pred = testPred()
 
         val timer = IsTimer.create()
-        Wait.waitUntilComplete(pred,2000)
+        Wait.untilComplete(pred,2000)
         val timeTaken = timer.timeTakenInMilliseconds()
         println("Time Taken: ${timer.timeTakenInMillisecondsAsString}")
         assertThat(timeTaken).isLessThan(2100.00)
+    }
+
+    private fun testPred(): Pred {
+        return {
+            Thread.sleep(1980)
+            println("Test Pred Finished")
+            true
+        }
     }
 }

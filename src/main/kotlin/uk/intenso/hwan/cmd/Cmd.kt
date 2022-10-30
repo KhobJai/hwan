@@ -1,17 +1,14 @@
 package uk.intenso.hwan.cmd
 
-import org.apache.commons.io.IOUtils
 import uk.intenso.hwan.res.ReadUtils
-import java.util.Arrays
+import uk.intenso.hwan.strings.doubleQuote
 import java.util.concurrent.TimeUnit
 
 
-fun quote(str: String): String {
-    return '"' + str + '"'
-}
+
 
 fun runCommand(cmd: String): String? {
-    val fullCommand = "sh -c" + quote(cmd)
+    val fullCommand = "sh -c" + doubleQuote(cmd)
     val proc = Runtime.getRuntime().exec(fullCommand)
     return ReadUtils.streamToString(proc.inputStream)
 }

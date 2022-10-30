@@ -1,22 +1,37 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
-}
+    id "org.jetbrains.kotlin.jvm"
+    id "maven-publish"
+    id "com.google.cloud.artifactregistry.gradle-plugin" version "2.1.5"
 
-group 'uk.intenso.hwan'
-version '1.0-SNAPSHOT'
+}
 
 repositories {
     mavenCentral()
+    url "artifactregistry://us-central1-maven.pkg.dev/iscloud-367107/is-repo"
 }
+
+publishing {
+    repositories {
+        maven {
+            url "artifactregistry://us-central1-maven.pkg.dev/iscloud-367107/is-repo"
+        }
+    }
+}
+
+group 'uk.intenso.hwan'
+version '0.1.2-SNAPSHOT'
+
+
 
 dependencies {
 
-    implementation 'org.slf4j:slf4j-simple:2.0.0'
-    implementation 'com.google.code.gson:gson:2.9.1'
+    implementation 'org.slf4j:slf4j-simple:2.0.3'
+    api 'com.google.code.gson:gson:2.10'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
 
     api  'commons-io:commons-io:2.11.0'
-    api 'org.yaml:snakeyaml:1.30'
+    api 'org.yaml:snakeyaml:1.33'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.assertj:assertj-core:3.23.1'

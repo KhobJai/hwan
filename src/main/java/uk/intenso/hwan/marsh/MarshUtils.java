@@ -11,6 +11,16 @@ public class MarshUtils implements Marshaller {
 
     private Gson gson;
 
+    public static MarshUtils create() {
+        return new MarshUtils(new Yaml(),new Gson());
+    }
+
+
+    public MarshUtils(Yaml yaml, Gson gson) {
+        this.yaml = yaml;
+        this.gson = gson;
+    }
+
     @Override
     public <T> String toYaml(T t) {
         return yaml.dump(t);
