@@ -4,7 +4,7 @@ import uk.intenso.hwan.res.ReadUtils
 import uk.intenso.hwan.strings.doubleQuote
 import java.util.concurrent.TimeUnit
 
-
+@Deprecated("Use IsSh")
 
 
 fun runCommand(cmd: String): String? {

@@ -1,5 +1,6 @@
 package uk.intenso.hwan.sh
 
+@Deprecated("use IsSh")
 class Sh() {
 
     private val shellPath = arrayOf("sh", "-c")

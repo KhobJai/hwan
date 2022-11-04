@@ -1,15 +1,0 @@
-
-[	java:S112-"FDefine and throw a dedicated exception instead of using a generic one.(ãÙÍß
-`	java:S1122"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-S	java:S106"9Replace this use of System.out or System.err by a logger.(¿®–ïøÿÿÿÿ
-t
-java:S21421"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ò¶È
-V
-java:S1128";Remove this unused import 'uk.intenso.hwan.res.WriteUtils'.(Ÿ–Ãäûÿÿÿÿ
-H
-java:S1128"-Remove this unused import 'java.util.Arrays'.(î–˜Éüÿÿÿÿ
-S
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ
-[
-java:S1128
-"@Remove this unused import 'java.util.stream.Collectors.joining'.(Æñ¿âşÿÿÿÿ
