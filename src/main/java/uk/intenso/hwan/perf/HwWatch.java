@@ -1,6 +1,6 @@
 package uk.intenso.hwan.perf;
 
-public class IsTimer {
+public class HwWatch {
 
     private long startTime;
 
@@ -8,10 +8,10 @@ public class IsTimer {
 
     private boolean started, stopped;
 
-    private IsTimer() {
+    private HwWatch() {
     }
 
-    public IsTimer(long startTime) {
+    public HwWatch(long startTime) {
         reset();
 
     }
@@ -23,8 +23,8 @@ public class IsTimer {
         this.startTime = 0L;
     }
 
-    public static IsTimer create() {
-        var timer =  new IsTimer(System.nanoTime());
+    public static HwWatch create() {
+        var timer =  new HwWatch(System.nanoTime());
         timer.start();
         return timer;
     }

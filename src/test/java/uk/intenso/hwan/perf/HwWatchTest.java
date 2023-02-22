@@ -4,12 +4,12 @@ import org.junit.jupiter.api.*;
 
 import static org.assertj.core.api.Assertions.*;
 
-class IsTimerTest {
+class HwWatchTest {
 
 
     @Test
      void shouldTimeThreeSecondsInSeconds() throws InterruptedException {
-        var timer = IsTimer.create();
+        var timer = HwWatch.create();
         waitForMillis(3000);
         var timeInSeconds = timer.getTimeTakenInSecondsAsString();
         assertThat(timeInSeconds).isEqualTo("3.00");
@@ -17,7 +17,7 @@ class IsTimerTest {
 
     @Test
      void shouldTimeTwoSecondsInMilliSeconds() throws InterruptedException {
-        var timer = IsTimer.create();
+        var timer = HwWatch.create();
         waitForMillis(2000);
         var timeInSeconds = timer.getTimeTakenInMillisecondsAsString();
         assertThat(timeInSeconds).startsWith("2000.");

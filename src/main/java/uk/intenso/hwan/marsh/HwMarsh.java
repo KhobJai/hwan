@@ -2,21 +2,23 @@ package uk.intenso.hwan.marsh;
 
 import com.google.gson.Gson;
 import org.yaml.snakeyaml.Yaml;
-import uk.intenso.hwan.res.ReadUtils;
+import uk.intenso.hwan.io.ReadUtils;
 
-public class MarshUtils implements Marshaller {
+public class HwMarsh implements Marshaller {
 
+    private final Yaml yaml;
 
-    private Yaml yaml;
+    private final Gson gson;
 
-    private Gson gson;
-
-    public static MarshUtils create() {
-        return new MarshUtils(new Yaml(),new Gson());
+    public static HwMarsh create() {
+        return create(new Yaml(), new Gson());
     }
 
+    public static HwMarsh create(Yaml yaml, Gson gson) {
+        return new HwMarsh(yaml, gson);
+    }
 
-    public MarshUtils(Yaml yaml, Gson gson) {
+    public HwMarsh(Yaml yaml, Gson gson) {
         this.yaml = yaml;
         this.gson = gson;
     }
@@ -34,12 +36,12 @@ public class MarshUtils implements Marshaller {
 
     @Override
     public <T> T fromYamlClassPath(Class<T> clazz, String path) {
-       return fromYaml(clazz,ReadUtils.readFromClasspath(path));
+        return fromYaml(clazz, ReadUtils.readFromClasspath(path));
     }
 
     @Override
     public <T> T fromYamlFilePath(Class<T> clazz, String path) {
-        return fromYaml(clazz,ReadUtils.readFromFilePath(path));
+        return fromYaml(clazz, ReadUtils.readFromFilePath(path));
     }
 
     @Override
@@ -49,17 +51,17 @@ public class MarshUtils implements Marshaller {
 
     @Override
     public <T> T fromJson(Class<T> clazz, String data) {
-        return gson.fromJson(data,clazz);
+        return gson.fromJson(data, clazz);
     }
 
     @Override
     public <T> T fromJsonClassPath(Class<T> clazz, String path) {
-        return fromJson(clazz,ReadUtils.readFromClasspath(path));
+        return fromJson(clazz, ReadUtils.readFromClasspath(path));
     }
 
     @Override
     public <T> T fromJsonFilePath(Class<T> clazz, String path) {
-        return fromJson(clazz,ReadUtils.readFromFilePath(path));
+        return fromJson(clazz, ReadUtils.readFromFilePath(path));
     }
 
 }

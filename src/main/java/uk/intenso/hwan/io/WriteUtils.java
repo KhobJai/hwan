@@ -1,4 +1,4 @@
-package uk.intenso.hwan.res;
+package uk.intenso.hwan.io;
 
 
 import uk.intenso.hwan.ex.TryUtils;

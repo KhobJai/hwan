@@ -10,7 +10,8 @@ buildscript {
 
 plugins {
     id 'java'
-    id "org.jetbrains.kotlin.jvm" version "1.7.20"
+    id 'idea'
+    id 'org.jetbrains.kotlin.jvm' //version '1.7.21'
     id "maven-publish"
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
@@ -19,54 +20,27 @@ group 'uk.intenso.hwan'
 version '0.1.0'
 var repoUrl = "http://localhost:9080/repository/internal"
 
-
-//publishing {
-//    repositories {
-//        maven {
-//            name "LocalArchivaSnapshots"
-//            url "$repoUrl"
-//            credentials {
-//                username = "$mavenUser"
-//                password = "$mavenPassword"
-//            }}
-//    }
-//}
-
 repositories {
     mavenCentral()
-//    maven {
-//        allowInsecureProtocol = true
-//        url "$repoUrl"
-//        credentials {
-//            username = "$mavenUser"
-//            password = "$mavenPassword"
-//        }}
-//    maven {
-//        url "https://us-central1-maven.pkg.dev/iscloud-367107/is-repo"
-//        credentials {
-//            username = "_json_key_base64"
-//            password = "$artifactRegistryMavenSecret"
-//        }
-//        authentication {
-//            basic(BasicAuthentication)
-//        }
-//    }
 }
 
+
 dependencies {
-//    implementation "uk.intenso:is-core:0.0.1"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     api 'org.slf4j:slf4j-simple:2.0.3'
     api 'com.google.code.gson:gson:2.10'
-//    api 'io.reactivex.rxjava3:rxjava:3.1.5'
+//    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
+    implementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.13'
+    api 'org.apache.httpcomponents:httpclient:4.5.13'
 
     api 'commons-io:commons-io:2.11.0'
     api 'org.yaml:snakeyaml:1.33'
+    implementation 'com.google.code.gson:gson:2.9.1'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.assertj:assertj-core:3.23.1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
 
 }
 

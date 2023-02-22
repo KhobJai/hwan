@@ -1,6 +1,6 @@
 package uk.intenso.hwan.cmd
 
-import uk.intenso.hwan.res.ReadUtils
+import uk.intenso.hwan.io.ReadUtils
 import uk.intenso.hwan.strings.doubleQuote
 import java.util.concurrent.TimeUnit
 

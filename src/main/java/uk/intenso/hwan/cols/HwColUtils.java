@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-public class ColUtils {
+public class HwColUtils {
 
-    private ColUtils() {
+    private HwColUtils() {
     }
 
     public static <T> List<T> toList(Collection<T> col) {

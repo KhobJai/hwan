@@ -1,7 +1,7 @@
 package uk.intenso.hwan.kottest
 
 import org.slf4j.LoggerFactory
-import uk.intenso.hwan.cols.ColUtils
+import uk.intenso.hwan.cols.HwColUtils
 
 class MapFind {
         private val log = LoggerFactory.getLogger(MapFind::class.java)
@@ -54,7 +54,7 @@ class MapFind {
             }
             is Map<*, *> -> {
                 log.debug("Found Child Map with Key {}}%n", keys[0])
-                findDeep(results, *ColUtils.removeFirst(*keys))
+                findDeep(results, *HwColUtils.removeFirst(*keys))
             }
             else -> {
                 throw RuntimeException("Found value of class " + results.javaClass.simpleName + " Don't know what to do yet...")

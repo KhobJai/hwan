@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-class ColUtilsTest {
+class HwColUtilsTest {
 
     private List<Integer> intList;
 
@@ -31,7 +31,7 @@ class ColUtilsTest {
     @Test
     void shouldConvertArrayToList() {
 
-        var result = ColUtils.toList(stringArray);
+        var result = HwColUtils.toList(stringArray);
         assertThat(result).hasSize(stringArray.length);
         assertThat(result.get(2)).isEqualTo(stringArray[2]);
     }
@@ -40,7 +40,7 @@ class ColUtilsTest {
     void setToList() {
 
         var set = Sets.set("X", "Y", "T", "L");
-        var result = ColUtils.toList(set);
+        var result = HwColUtils.toList(set);
         assertThat(result).hasSize(set.size());
         assertThat(result.containsAll(set));
     }
@@ -48,7 +48,7 @@ class ColUtilsTest {
     @Test
     void shouldConvertToIntArray() {
 
-        Integer[] result = ColUtils.toIntArray(intList);
+        Integer[] result = HwColUtils.toIntArray(intList);
         assertThat(result.getClass().isArray()).isTrue();
         assertThat(result).hasSize(intList.size());
     }
@@ -56,7 +56,7 @@ class ColUtilsTest {
     @Test
     void shouldConvertToStringArray() {
 
-        String[] result = ColUtils.toStringArray(Lists.list("A", "B"));
+        String[] result = HwColUtils.toStringArray(Lists.list("A", "B"));
         assertThat(result.getClass().isArray()).isTrue();
         assertThat(result).hasSize(2);
     }
@@ -64,10 +64,10 @@ class ColUtilsTest {
     @Test
     void shouldConvertToArray() {
 
-        String[] result = ColUtils.toArray(Lists.list("A", "B"));
+        String[] result = HwColUtils.toArray(Lists.list("A", "B"));
         assertThat(result.getClass().isArray()).isTrue();
         assertThat(result).hasSize(2);
-        Integer[] result2 = ColUtils.toArray(Lists.list(1, 2));
+        Integer[] result2 = HwColUtils.toArray(Lists.list(1, 2));
         assertThat(result2.getClass().isArray()).isTrue();
         assertThat(result2).hasSize(2);
     }
@@ -75,35 +75,35 @@ class ColUtilsTest {
     @Test
     void shouldRemoveLastFromList() {
 
-        var result = ColUtils.removeLast(intList);
+        var result = HwColUtils.removeLast(intList);
         assertThat(result).hasSize(intList.size() - 1);
-        assertThat(result).doesNotContain(ColUtils.lastValue(intList));
+        assertThat(result).doesNotContain(HwColUtils.lastValue(intList));
     }
 
     @Test
     void removeFirstFromList() {
-        var result = ColUtils.removeFirst(intList);
+        var result = HwColUtils.removeFirst(intList);
         assertThat(result).hasSize(intList.size() - 1);
         assertThat(result).doesNotContain(2);
     }
 
     @Test
     void testRemoveLastFromList() {
-        var result = ColUtils.removeLast(intList);
+        var result = HwColUtils.removeLast(intList);
         assertThat(result).hasSize(intList.size() - 1);
         assertThat(result).doesNotContain(4);
     }
 
     @Test
     void removeFirstFromArray() {
-        var result = ColUtils.removeFirst(stringArray);
+        var result = HwColUtils.removeFirst(stringArray);
         assertThat(result).hasSize(stringArray.length - 1);
         assertThat(result).doesNotContain("World");
     }
 
     @Test
     void testRemoveLastFromArray() {
-        var result = ColUtils.removeLast(stringArray);
+        var result = HwColUtils.removeLast(stringArray);
         assertThat(result).hasSize(stringArray.length - 1);
         assertThat(result).contains("World");
         assertThat(result).doesNotContain("Tomato");
@@ -112,7 +112,7 @@ class ColUtilsTest {
 
     @Test
     void testRemove() {
-        assertThat(ColUtils.firstValue(stringArray)).isEqualTo("World");
-        assertThat(ColUtils.lastValue(stringArray)).isEqualTo("Tomato");
+        assertThat(HwColUtils.firstValue(stringArray)).isEqualTo("World");
+        assertThat(HwColUtils.lastValue(stringArray)).isEqualTo("Tomato");
     }
 }

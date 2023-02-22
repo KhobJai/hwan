@@ -1,15 +1,15 @@
 package uk.intenso.hwan.strings;
 
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Assertions.*;
 
 import static org.assertj.core.api.Assertions.*;
 
-class IsStruTest {
+class HwStringUtilsTest {
 
     @Test
     void shouldDoubleQuote() {
-        var result = IsStru.doubleQuote("hello world");
+        var result = HwStringUtils.doubleQuote("hello world");
         assertThat(result).isEqualTo("\"hello world\"");
     }
+
 }

@@ -1,4 +1,4 @@
-package uk.intenso.hwan.res;
+package uk.intenso.hwan.io;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.*;

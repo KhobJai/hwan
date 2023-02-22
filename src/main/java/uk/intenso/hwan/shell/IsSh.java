@@ -3,8 +3,7 @@ package uk.intenso.hwan.shell;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.intenso.hwan.ex.TryUtils;
-import uk.intenso.hwan.res.ReadUtils;
+import uk.intenso.hwan.io.ReadUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +11,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Objects;
 
-public class IsSh {
+public class IsSh implements ShellCmdExecutor {
 
     private static Logger log = LoggerFactory.getLogger(IsSh.class);
 
@@ -21,10 +20,10 @@ public class IsSh {
     public String query(String cmd) {
         String response = "";
         Process proc = null;
-        String fullCommand = cmd;
-        logCommand(fullCommand);
+//        String fullCommand = cmd;
+        logCommand("(Query)"+ cmd);
         try {
-            proc = buildProc(fullCommand);
+            proc = buildProc(cmd);
             runAndWait(proc);
             assertExitValueIsZero(proc);
             return getOutput(proc);
@@ -42,16 +41,16 @@ public class IsSh {
         return Runtime.getRuntime().exec(fullCommand);
     }
 
-    private Process buildProc(String[] fullCommand) throws IOException {
-        return Runtime.getRuntime().exec(new String[]{"sh -c", "nordvpn", "status"});
-    }
+//    private Process buildProc(String[] fullCommand) throws IOException {
+//        return Runtime.getRuntime().exec(new String[]{"sh -c", "nordvpn", "status"});
+//    }
 
     public boolean exec(String cmd) {
 
         String response = "";
         Process proc = null;
         String fullCommand = cmd;
-        logCommand(fullCommand);
+        logCommand("(Exec)"+fullCommand);
         try {
             proc = buildProc(fullCommand);
             runAndWait(proc);

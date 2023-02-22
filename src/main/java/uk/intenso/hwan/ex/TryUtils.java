@@ -7,9 +7,6 @@ public class TryUtils {
     private TryUtils() {
     }
 
-//    public static <U> U orThrow(Supplier<U> sup) {
-//        return orThrow(wrap(sup));
-//    }
 
     public static <U> U orThrow(TrySup<U> sup) {
         return orThrow(sup, null);

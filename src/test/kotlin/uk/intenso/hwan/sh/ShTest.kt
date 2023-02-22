@@ -1,14 +1,9 @@
 package uk.intenso.hwan.sh
 
-import org.apache.commons.io.IOUtils
 import org.junit.jupiter.api.*
-import org.junit.jupiter.api.Assertions.*
 import org.assertj.core.api.Assertions.*
-import uk.intenso.hwan.kottest.Pred
-import uk.intenso.hwan.res.ReadUtils
+import uk.intenso.hwan.io.ReadUtils
 import uk.intenso.hwan.wait.Wait
-import java.util.Properties
-import java.util.function.Predicate
 
 internal class ShTest {
 
@@ -36,7 +31,7 @@ internal class ShTest {
                     println("Proceess  Status: ${proc.isAlive}")
                 if (proc.exitValue() != 0) {
                     println(ReadUtils.streamToString(proc.errorStream))
-                    fail("Error Exit Value: ${proc.exitValue()}")
+                    fail<String>("Error Exit Value: ${proc.exitValue()}")
                 }
                 val test = ReadUtils.streamToString(proc.inputStream);
                 assertThat(test).isNotEmpty;
