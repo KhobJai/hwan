@@ -2,6 +2,7 @@ package uk.intenso.hwan.ex;
 
 import org.junit.jupiter.api.*;
 import uk.intenso.hwan.TestException;
+import uk.intenso.hwan.hwtry.statictry.ExUtils;
 
 import static org.assertj.core.api.Assertions.*;
 

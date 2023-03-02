@@ -6,6 +6,7 @@ import org.assertj.core.util.Sets;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
+import java.util.function.Function;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -23,6 +24,8 @@ class HwColUtilsTest {
 
     @BeforeEach
     void setUp() {
+
+        Function<Integer,String> function = (i) -> "dsfasdf";
 
         intList = Lists.list(2, 54, 6, 7, 9, 1, 4);
         stringArray = Arrays.array("World", "Hello", "Cheese", "Tomato");

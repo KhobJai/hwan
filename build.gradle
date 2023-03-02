@@ -1,24 +1,34 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
-    }
-}
-
 plugins {
-    id 'java'
+    id 'java-library'
     id 'idea'
-    id 'org.jetbrains.kotlin.jvm' //version '1.7.21'
-    id "maven-publish"
-    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id 'org.jetbrains.kotlin.jvm' version '1.7.21'
 }
 
 group 'uk.intenso.hwan'
-version '0.1.0'
-var repoUrl = "http://localhost:9080/repository/internal"
+version '0.1.1'
+
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': 'Hwan',
+                'Implementation-Version': project.version)
+    }
+}
+
+
+sourceSets {
+    integrationTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+        compileClasspath += sourceSets.test.output
+        runtimeClasspath += sourceSets.test.output
+    }
+}
+
+configurations {
+    integrationTestImplementation.extendsFrom implementation
+    integrationTestRuntimeOnly.extendsFrom runtimeOnly
+}
 
 repositories {
     mavenCentral()
@@ -29,31 +39,41 @@ dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     api 'org.slf4j:slf4j-simple:2.0.3'
     api 'com.google.code.gson:gson:2.10'
-//    implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
-    implementation group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.13'
+    api group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.13'
     api 'org.apache.httpcomponents:httpclient:4.5.13'
-
     api 'commons-io:commons-io:2.11.0'
     api 'org.yaml:snakeyaml:1.33'
-    implementation 'com.google.code.gson:gson:2.9.1'
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation 'org.mockito:mockito-core:5.1.1'
+
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
+
+
+    integrationTestImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    integrationTestImplementation 'org.assertj:assertj-core:3.23.1'
+    integrationTestRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+
 
 }
 
 test {
     useJUnitPlatform()
 }
+
+//compileJava {
+//    jvmTarget = "17"
+//}
+//
 compileKotlin {
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }

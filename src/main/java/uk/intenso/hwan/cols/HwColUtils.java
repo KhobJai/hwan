@@ -4,38 +4,35 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Convenience and readability methods for Lists,Arrays etc.
+ */
 public class HwColUtils {
 
     private HwColUtils() {
     }
 
-    public static <T> List<T> toList(Collection<T> col) {
-        return col.stream().toList();
-    }
-
-    public static <T> List<T> toList(T[] arr) {
-        return List.of(arr);
-    }
-
-
-    public static <T> T[] toArray(Collection<T> list) {
-        if (list.toArray()[0].getClass().equals(String.class)) {
-            return (T[]) toStringArray((Collection<String>) list);
-        }
-        else if (list.toArray()[0].getClass().equals(Integer.class)) {
-            return (T[]) toIntArray((Collection<Integer>) list);
-        }
-        else {
-            throw new RuntimeException("Fialed t convert to array");
+    /**
+     * Attempts to easily convert a collection of Strings or Integers to an Array. More primitives could be added
+     * in the future.
+     */
+    public static <T> T[] toArray(Collection<T> collection) {
+        if (collection.toArray()[0].getClass().equals(String.class)) {
+            return (T[]) toStringArray((Collection<String>) collection);
+        } else if (collection.toArray()[0].getClass().equals(Integer.class)) {
+            return (T[]) toIntArray((Collection<Integer>) collection);
+        } else {
+            throw new RuntimeException("Failed to convert to array type " + collection.toArray()[0].getClass()
+                    .getSimpleName() + " not supported");
         }
     }
 
     public static String[] toStringArray(Collection<String> col) {
-        return col.toArray(new String[0]);
+        return col.toArray(new String[col.size()]);
     }
 
     public static Integer[] toIntArray(Collection<Integer> col) {
-        return col.toArray(new Integer[0]);
+        return col.toArray(new Integer[col.size()]);
     }
 
     @SafeVarargs
@@ -53,7 +50,7 @@ public class HwColUtils {
     }
 
     public static <T> List<T> removeLast(List<T> coll) {
-        return coll.subList(0, coll.size()-1);
+        return coll.subList(0, coll.size() - 1);
     }
 
     public static <T> T firstValue(List<T> coll) {
@@ -61,7 +58,7 @@ public class HwColUtils {
     }
 
     public static <T> T lastValue(List<T> coll) {
-        return coll.get(coll.size()-1);
+        return coll.get(coll.size() - 1);
     }
 
     public static <T> T firstValue(T[] arr) {
@@ -69,13 +66,24 @@ public class HwColUtils {
     }
 
     public static <T> T lastValue(T[] arr) {
-        return arr[arr.length-1];
+        return arr[arr.length - 1];
     }
 
-    public static int size(Collection<?> col) { return col.size(); }
+    public static <T> List<T> toList(Collection<T> col) {
+        return col.stream().toList();
+    }
 
-    public static int size(Object[] col) { return col.length; }
+    public static <T> List<T> toList(T[] arr) {
+        return List.of(arr);
+    }
 
+    public static int size(Collection<?> col) {
+        return col.size();
+    }
+
+    public static int size(Object[] col) {
+        return col.length;
+    }
 
 
 }

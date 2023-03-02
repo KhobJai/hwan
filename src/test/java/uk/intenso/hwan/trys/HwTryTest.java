@@ -1,22 +1,22 @@
 package uk.intenso.hwan.trys;
 
 import org.junit.jupiter.api.*;
-import uk.intenso.hwan.ex.TrySup;
-import uk.intenso.hwan.ex.TryUtils;
+import uk.intenso.hwan.hwtry.statictry.TrySupplier;
+import uk.intenso.hwan.hwtry.statictry.TryUtils;
 
 import static org.assertj.core.api.Assertions.*;
 
 class HwTryTest {
 
-    TrySup<Integer> goodTrySup = () -> 1 + 2;
-    TrySup<Short> badTrySup = () ->  Short.valueOf("3180743298w597893983758");
+    TrySupplier<Integer> goodTrySupplier = () -> 1 + 2;
+    TrySupplier<Short> badTrySupplier = () ->  Short.valueOf("3180743298w597893983758");
 
 
 
     @Test
     void shouldSucceedOnGoodTrySup() {
-        assertThat(goodTrySup).isInstanceOf(TrySup.class);
-        assertThat(TryUtils.orThrow(goodTrySup)).isEqualTo(3);
+        assertThat(goodTrySupplier).isInstanceOf(TrySupplier.class);
+        assertThat(TryUtils.orThrow(goodTrySupplier)).isEqualTo(3);
     }
 
 

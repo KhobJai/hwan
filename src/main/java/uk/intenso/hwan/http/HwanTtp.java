@@ -238,7 +238,7 @@ public class HwanTtp {
             case POST:
                 yield setRequestBody(new HttpPost(encodedUrl));
             default:
-                throw new RuntimeException("Unimplemented method: " + method);
+                throw new NotYetImplementedException("Unimplemented method: " + method);
         };
     }
 
