@@ -3,7 +3,7 @@ package uk.intenso.hwan.strings
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class StrUtilsTest {
+class OldStrUtilsTest {
 
 
     @Test

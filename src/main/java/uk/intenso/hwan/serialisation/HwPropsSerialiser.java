@@ -1,5 +1,6 @@
 package uk.intenso.hwan.serialisation;
 
+import org.jetbrains.annotations.NotNull;
 import uk.intenso.hwan.io.HwIoUtils;
 
 import java.io.IOException;
@@ -23,27 +24,35 @@ public class HwPropsSerialiser {
 
     public Map<String,String> propsToStringMap(Properties properties) {
         Map<String,String> map = new HashMap<>();
-        /// V1
-//        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-//            map.put((String) entry.getKey(), (String) entry.getValue());
-//        }
-//        return map;
+        /// V2
+//        return propsToMapV3(properties, map);
+
+
         // V2
-//        map
-//                .putAll(properties.entrySet()
-//                        .stream()
-//                        .collect(Collectors.toMap(e -> e.getKey().toString(),
-//                                e -> e.getValue().toString())));
+//        return propsToMapV2(properties, map);
 
-        // V3
-//        properties.entrySet().forEach(entry -> {
-//            map.put((String) entry.getKey(), (String) entry.getValue());
-//        });
+        // V1
+        return propsToMapV1(properties);
 
+    }
+
+    private static Map<String, String> propsToMapV3(Properties properties, Map<String, String> map) {
+        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
+            map.put((String) entry.getKey(), (String) entry.getValue());
+        }
+        return map;
+    }
+
+    private static Map<String, String> propsToMapV2(Properties properties, Map<String, String> map) {
+        properties.entrySet().forEach(entry -> {
+            map.put((String) entry.getKey(), (String) entry.getValue());
+        });
+        return map;
+    }
+
+    private static Map<String, String> propsToMapV1(Properties properties) {
         return properties.entrySet().stream()
                 .collect(Collectors.toMap(e -> e.getKey().toString(),
                         e -> e.getValue().toString()));
-
-//                return map;
     }
 }

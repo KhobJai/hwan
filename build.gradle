@@ -44,6 +44,10 @@ dependencies {
     api 'commons-io:commons-io:2.11.0'
     api 'org.yaml:snakeyaml:1.33'
 
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+
+
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.assertj:assertj-core:3.23.1'
     testImplementation 'org.mockito:mockito-core:5.1.1'
