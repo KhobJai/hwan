@@ -11,12 +11,10 @@ internal class RunWithTimeoutTest {
 
     @Test
     fun waitUntilCompleteTest() {
-        val pred: Pred = testPred()
-
         val testLongFunction =
             Function { i: Int? -> Thread.sleep(1500);"$i" }
         val timer = HwWatch.create()
-        RunWithTimeout.untilComplete(testLongFunction,2000,10)
+        RunWithTimeout.untilComplete(testLongFunction,2000,2000)
         val timeTaken = timer.timeTakenInMilliseconds()
         println("Time Taken: ${timer.timeTakenInMillisecondsAsString}")
         assertThat(timeTaken).isLessThan(2100.00)

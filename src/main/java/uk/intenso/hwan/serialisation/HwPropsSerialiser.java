@@ -1,7 +1,6 @@
 package uk.intenso.hwan.serialisation;
 
-import org.jetbrains.annotations.NotNull;
-import uk.intenso.hwan.io.HwIoUtils;
+import uk.intenso.hwan.io.HwFileIoUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ public class HwPropsSerialiser {
     public Properties loadProperties(String path) {
         Properties properties = new Properties();
         try {
-            properties.load(HwIoUtils.classpathToStream(path));
+            properties.load(HwFileIoUtils.classpathToStream(path));
         } catch (IOException e) {
             throw new SerialisationException("Unable to load properties file",e);
         }

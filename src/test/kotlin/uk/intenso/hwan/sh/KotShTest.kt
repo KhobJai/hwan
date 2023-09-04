@@ -3,7 +3,7 @@ package uk.intenso.hwan.sh
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.fail
 import org.junit.jupiter.api.Test
-import uk.intenso.hwan.io.HwIoUtils
+import uk.intenso.hwan.io.HwFileIoUtils
 import uk.intenso.hwan.timeout.RunWithTimeout
 
 internal class KotShTest {
@@ -31,10 +31,10 @@ internal class KotShTest {
                 println("Proceess  is Alive? ${proc.isAlive}")
                 proc.waitFor();
                 if (proc.exitValue() != 0) {
-                    println(HwIoUtils.streamToString(proc.errorStream))
+                    println(HwFileIoUtils.streamToString(proc.errorStream))
                     fail<String>("Error Exit Value: ${proc.exitValue()}")
                 }
-                val test = HwIoUtils.streamToString(proc.inputStream);
+                val test = HwFileIoUtils.streamToString(proc.inputStream);
                 assertThat(test).isNotEmpty;
                 println(test)
 

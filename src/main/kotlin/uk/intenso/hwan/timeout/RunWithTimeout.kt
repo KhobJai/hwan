@@ -19,11 +19,11 @@ import java.util.function.Predicate
 object RunWithTimeout {
 
     @JvmStatic
-    fun <T,R> untilComplete(function: Function<T,R>, t:T, maxWaitIntMillis: Int, interval: Long = 10):R? {
+    fun <T,R> untilComplete(function: Function<T,R>, t:T, maxWaitIntMillis: Long):R? {
         val executor = Executors.newSingleThreadExecutor()
         val future: Future<*> = executor.submit { function.apply(t) }
         try {
-            future[7, TimeUnit.SECONDS]
+            future[maxWaitIntMillis, TimeUnit.MILLISECONDS]
         } catch (e: Exception) {
             future.cancel(true)
             throw TimeoutException(e);

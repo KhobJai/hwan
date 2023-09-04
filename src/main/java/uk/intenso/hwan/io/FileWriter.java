@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-interface WriteIO {
+interface FileWriter {
     static void writeStringToFile(String data, String path) {
         TryUtils.orThrow(() -> Files.writeString(Path.of(path), data));
     }

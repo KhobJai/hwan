@@ -3,7 +3,7 @@ package uk.intenso;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.intenso.hwan.io.HwIoUtils;
+import uk.intenso.hwan.io.HwFileIoUtils;
 import uk.intenso.hwan.shell.CliUtils;
 import uk.intenso.hwan.shell.Sh;
 
@@ -75,7 +75,7 @@ public class ShellCmdTest {
 
         var testFile = new File(TEST_FILE_NAME);
         assertThat(testFile.exists()).isTrue();
-        var fileData = HwIoUtils.readFromFilePath(CliUtils.currentDirectory() + "/" + TEST_FILE_NAME);
+        var fileData = HwFileIoUtils.readFromFilePath(CliUtils.currentDirectory() + "/" + TEST_FILE_NAME);
         assertThat(fileData.trim()).isEqualTo("Hello Redirect");
     }
 
@@ -111,7 +111,7 @@ public class ShellCmdTest {
         assertThat(exitCode).isEqualTo(0);
         var testFile = new File(TEST_FILE_NAME);
         assertThat(testFile.exists()).isTrue();
-        var fileData = HwIoUtils.readFromFilePath(TEST_ROOT_ABS_FILE_PATH);
+        var fileData = HwFileIoUtils.readFromFilePath(TEST_ROOT_ABS_FILE_PATH);
         assertThat(fileData.trim()).isEqualTo("Hellow Redirect");
     }
 

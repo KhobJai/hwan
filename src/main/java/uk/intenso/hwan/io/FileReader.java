@@ -14,7 +14,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
- interface ReadIO {
+ interface FileReader {
 
     static File findFileInDirectory(File directory, String filename) {
         try (Stream<Path> paths = Files.walk(directory.toPath())) {
@@ -32,12 +32,12 @@ import java.util.stream.Stream;
     }
 
     static File getFromClasspathAsFile(String path) {
-        return TryUtils.orThrow(() -> Paths.get(Objects.requireNonNull(HwIoUtils.class.getClassLoader().
+        return TryUtils.orThrow(() -> Paths.get(Objects.requireNonNull(HwFileIoUtils.class.getClassLoader().
                 getResource(path)).toURI()).toFile());
     }
 
     static String readFromClasspath(String path) {
-        return TryUtils.orThrow(() -> streamToString(Objects.requireNonNull(HwIoUtils.class.getClassLoader()
+        return TryUtils.orThrow(() -> streamToString(Objects.requireNonNull(HwFileIoUtils.class.getClassLoader()
                 .getResourceAsStream(path))));
     }
 
@@ -55,6 +55,6 @@ import java.util.stream.Stream;
     }
 
     static InputStream classpathToStream(String path) {
-        return TryUtils.orThrow(() -> HwIoUtils.class.getClassLoader().getResourceAsStream(path));
+        return TryUtils.orThrow(() -> HwFileIoUtils.class.getClassLoader().getResourceAsStream(path));
     }
 }

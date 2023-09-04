@@ -1,6 +1,6 @@
 package uk.intenso.hwan.shell;
 
-import uk.intenso.hwan.io.HwIoUtils;
+import uk.intenso.hwan.io.HwFileIoUtils;
 
 import java.io.IOException;
 
@@ -38,9 +38,9 @@ public class ShExec {
             }
             if (proc.exitValue() != 0) {
                 throw new RuntimeException(String.format("Process Failed with value %d: + %s", proc.exitValue(),
-                        HwIoUtils.streamToString(is)));
+                        HwFileIoUtils.streamToString(is)));
             } else {
-                return HwIoUtils.streamToString(is);
+                return HwFileIoUtils.streamToString(is);
             }
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);

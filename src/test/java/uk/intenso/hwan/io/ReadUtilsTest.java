@@ -46,12 +46,12 @@ class ReadUtilsTest {
 
     @BeforeEach
     void setup() {
-        HwIoUtils.writeStringToFile(FILEPATH_FILE_DATA, testFilePathFileFullPath());
+        HwFileIoUtils.writeStringToFile(FILEPATH_FILE_DATA, testFilePathFileFullPath());
     }
 
     @Test
     void shouldGetClasspathDirectory() {
-        var file = HwIoUtils.getFromClasspathAsFile("TestClasspathDirectory");
+        var file = HwFileIoUtils.getFromClasspathAsFile("TestClasspathDirectory");
         assertThat(file.isDirectory()).isTrue();
         assertThat(file.getAbsolutePath()).endsWith("resources/test/TestClasspathDirectory");
 
@@ -59,8 +59,8 @@ class ReadUtilsTest {
 
     @Test
     void getFileInDir() throws IOException {
-        var classpathDirectory = HwIoUtils.getFromClasspathAsFile(TEST_CLASSPATH_DIRECTORY);
-        File file = HwIoUtils.findFileInDirectory(classpathDirectory, testClasspathFilename());
+        var classpathDirectory = HwFileIoUtils.getFromClasspathAsFile(TEST_CLASSPATH_DIRECTORY);
+        File file = HwFileIoUtils.findFileInDirectory(classpathDirectory, testClasspathFilename());
         assertNotNull(file);
         var str = IOUtils.toString(file.toURI(), StandardCharsets.UTF_8);
         assertThat(str).startsWith("Classpath file data");
@@ -68,14 +68,14 @@ class ReadUtilsTest {
 
     @Test
     void readFromClasspath() {
-        assertThat(HwIoUtils.readFromClasspath(TEST_CLASSPATH_DIRECTORY + "/" + testClasspathFilename())).isEqualTo(CLASSPATH_FILE_DATA);
+        assertThat(HwFileIoUtils.readFromClasspath(TEST_CLASSPATH_DIRECTORY + "/" + testClasspathFilename())).isEqualTo(CLASSPATH_FILE_DATA);
     }
 
     @Test
     void readFromFilePath() throws IOException {
         try {
-            HwIoUtils.writeStringToFile(FILEPATH_FILE_DATA, testFilePathFileFullPath());
-            assertThat(HwIoUtils.readFromFilePath(testFilePathFileFullPath())).isEqualTo(FILEPATH_FILE_DATA);
+            HwFileIoUtils.writeStringToFile(FILEPATH_FILE_DATA, testFilePathFileFullPath());
+            assertThat(HwFileIoUtils.readFromFilePath(testFilePathFileFullPath())).isEqualTo(FILEPATH_FILE_DATA);
         } catch (Exception e) {
             fail("Unable to read from file path", e);
         } finally {

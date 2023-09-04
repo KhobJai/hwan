@@ -3,7 +3,7 @@ package uk.intenso.hwan.shell;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.intenso.hwan.io.HwIoUtils;
+import uk.intenso.hwan.io.HwFileIoUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -129,11 +129,11 @@ public class Sh implements ShellCmdExecutor {
     }
 
     private String getOutput(Process proc) {
-        return HwIoUtils.streamToString(proc::getInputStream);
+        return HwFileIoUtils.streamToString(proc::getInputStream);
     }
 
     private String getErrorOutput(Process proc) {
-        return HwIoUtils.streamToString(proc::getErrorStream);
+        return HwFileIoUtils.streamToString(proc::getErrorStream);
     }
 
     private void logCommand(String fullCommand) {

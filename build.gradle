@@ -36,16 +36,12 @@ repositories {
 
 
 dependencies {
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     api 'org.slf4j:slf4j-simple:2.0.3'
     api 'com.google.code.gson:gson:2.10'
-    api group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.13'
-    api 'org.apache.httpcomponents:httpclient:4.5.13'
-    api 'commons-io:commons-io:2.11.0'
-    api 'org.yaml:snakeyaml:1.33'
+    api 'org.apache.httpcomponents:httpclient:4.5.14'
 
-    compileOnly 'org.projectlombok:lombok:1.18.26'
-    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    api 'commons-io:commons-io:2.11.0'
+    api 'org.yaml:snakeyaml:2.0'
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
@@ -53,7 +49,6 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:5.1.1'
 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.2'
 
 
     integrationTestImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
@@ -61,6 +56,11 @@ dependencies {
     integrationTestRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 
 
+}
+
+configurations {
+    // configuration that holds jars to include in the jar
+    extraLibs
 }
 
 test {
@@ -79,5 +79,11 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "11"
+    }
+}
+
+jar {
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }

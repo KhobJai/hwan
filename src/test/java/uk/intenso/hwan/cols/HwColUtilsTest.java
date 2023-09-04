@@ -34,7 +34,7 @@ class HwColUtilsTest {
     @Test
     void shouldConvertArrayToList() {
 
-        var result = HwColUtils.toList(stringArray);
+        var result = HwColUtils.toImmutableList(stringArray);
         assertThat(result).hasSize(stringArray.length);
         assertThat(result.get(2)).isEqualTo(stringArray[2]);
     }
@@ -43,7 +43,7 @@ class HwColUtilsTest {
     void setToList() {
 
         var set = Sets.set("X", "Y", "T", "L");
-        var result = HwColUtils.toList(set);
+        var result = HwColUtils.toImmutableList(set);
         assertThat(result).hasSize(set.size());
         assertThat(result.containsAll(set));
     }

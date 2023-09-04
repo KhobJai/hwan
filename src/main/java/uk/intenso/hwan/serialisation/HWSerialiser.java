@@ -2,16 +2,7 @@ package uk.intenso.hwan.serialisation;
 
 import com.google.gson.Gson;
 import org.yaml.snakeyaml.Yaml;
-import uk.intenso.hwan.cols.HwColUtils;
-import uk.intenso.hwan.io.HwIoUtils;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.stream.Collectors;
+import uk.intenso.hwan.io.HwFileIoUtils;
 
 public class HWSerialiser implements JsonYamlSerialiser {
 
@@ -45,12 +36,12 @@ public class HWSerialiser implements JsonYamlSerialiser {
 
     @Override
     public <T> T fromYamlClassPath(Class<T> clazz, String path) {
-        return fromYaml(clazz, HwIoUtils.readFromClasspath(path));
+        return fromYaml(clazz, HwFileIoUtils.readFromClasspath(path));
     }
 
     @Override
     public <T> T fromYamlFilePath(Class<T> clazz, String path) {
-        return fromYaml(clazz, HwIoUtils.readFromFilePath(path));
+        return fromYaml(clazz, HwFileIoUtils.readFromFilePath(path));
     }
 
     @Override
@@ -65,12 +56,12 @@ public class HWSerialiser implements JsonYamlSerialiser {
 
     @Override
     public <T> T fromJsonClassPath(Class<T> clazz, String path) {
-        return fromJson(clazz, HwIoUtils.readFromClasspath(path));
+        return fromJson(clazz, HwFileIoUtils.readFromClasspath(path));
     }
 
     @Override
     public <T> T fromJsonFilePath(Class<T> clazz, String path) {
-        return fromJson(clazz, HwIoUtils.readFromFilePath(path));
+        return fromJson(clazz, HwFileIoUtils.readFromFilePath(path));
     }
 
 }

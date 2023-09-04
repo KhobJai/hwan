@@ -1,9 +1,5 @@
 package uk.intenso.hwan.testutils;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import java.util.ArrayList;
 import java.util.List;
 
 class TestDataClass {

@@ -1,5 +1,6 @@
 package uk.intenso.hwan.cols;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -69,12 +70,19 @@ public class HwColUtils {
         return arr[arr.length - 1];
     }
 
-    public static <T> List<T> toList(Collection<T> col) {
+    public static <T> List<T> toImmutableList(Collection<T> col) {
         return col.stream().toList();
     }
 
-    public static <T> List<T> toList(T[] arr) {
+    public static <T> List<T> toImmutableList(T[] arr) {
         return List.of(arr);
+    }
+    public static <T> List<T> toMutableList(Collection<T> col) {
+        return new ArrayList<>(col.stream().toList());
+    }
+
+    public static <T> ArrayList<T> toMutableList(T[] arr) {
+        return new ArrayList<>(List.of(arr));
     }
 
     public static int size(Collection<?> col) {

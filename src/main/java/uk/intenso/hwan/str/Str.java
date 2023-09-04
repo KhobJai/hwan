@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
  */
 public class Str {
 
+    private Str() {}
     public static List<String> getPlaceholders(String preFormatted) {
         var placeholders = new ArrayList<String>();
         var arr = preFormatted.split("\\{");

@@ -16,8 +16,7 @@ class KotShTest {
 
     @Test
     void shouldFailToExecCmd() {
-        var isSuccessfulExec = sh.exec("lsdfsdf");
-        assertThat(isSuccessfulExec).isNotEqualTo(0);
+     assertThatException().isThrownBy(() ->sh.exec("lsdfsdf"));
     }
 
     @Test

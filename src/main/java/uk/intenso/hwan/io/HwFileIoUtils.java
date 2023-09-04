@@ -5,55 +5,55 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.function.Supplier;
 
-public final class HwIoUtils {
-    private HwIoUtils() {
+public final class HwFileIoUtils {
+    private HwFileIoUtils() {
     }
 
     public static File findFileInDirectory(File directory, String filename) {
-        return ReadIO.findFileInDirectory(directory, filename);
+        return FileReader.findFileInDirectory(directory, filename);
     }
 
     public static File classpathRootAsFile() {
-        return ReadIO.classpathRootAsFile();
+        return FileReader.classpathRootAsFile();
     }
 
     public static File getFromClasspathAsFile(String path) {
-        return ReadIO.getFromClasspathAsFile(path);
+        return FileReader.getFromClasspathAsFile(path);
     }
 
     public static String readFromClasspath(String path) {
-        return ReadIO.readFromClasspath(path);
+        return FileReader.readFromClasspath(path);
     }
 
     public static String readFromFilePath(String path) {
-        return ReadIO.readFromFilePath(path);
+        return FileReader.readFromFilePath(path);
     }
 
     public static String streamToString(Supplier<InputStream> sup) {
-        return ReadIO.streamToString(sup);
+        return FileReader.streamToString(sup);
     }
 
     public static String streamToString(InputStream stream) {
-        return ReadIO.streamToString(stream);
+        return FileReader.streamToString(stream);
     }
 
 
     public static InputStream classpathToStream(String path) {
-        return ReadIO.classpathToStream(path);
+        return FileReader.classpathToStream(path);
     }
 
 
     public static void writeStringToFile(String data, String path) {
-        WriteIO.writeStringToFile(data, path);
+        FileWriter.writeStringToFile(data, path);
     }
 
 
     public static void writeInputToStdOut(InputStream is) {
-        WriteIO.writeInputToStdOut(is);
+        FileWriter.writeInputToStdOut(is);
     }
 
 
     public static void writeToStream(InputStream is, OutputStream os) {
-        WriteIO.writeToStream(is, os);
+        FileWriter.writeToStream(is, os);
     }
 }
